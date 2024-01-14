@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script src="./socket.io.js"></script>
+<script>
+    var socket = io("https://paal-casino-websocket.vercel.app/", {
+        auth: {
+            serverOffset: 0
+        },
+        // enable retries
+        ackTimeout: 10000,
+        retries: 3,
+    });
+    socket.emit('first', { data: 'hi' });
+
+    socket.on('second', (data) => {
+        console.log(data);
+    });
+</script>
+
+</html>
