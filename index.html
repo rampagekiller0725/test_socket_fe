@@ -12,14 +12,10 @@
 </body>
 <script src="./socket.io.js"></script>
 <script>
-    var socket = io("https://paal-casino-websocket.vercel.app/", {
-        auth: {
-            serverOffset: 0
-        },
-        // enable retries
-        ackTimeout: 10000,
-        retries: 3,
-    });
+    var connectionOptions = {
+        transports: ['websocket'],
+    };
+    var socket = io("http://95.216.227.115:4000");
     socket.emit('first', { data: 'hi' });
 
     socket.on('second', (data) => {
